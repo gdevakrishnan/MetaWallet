@@ -20,7 +20,7 @@ MetaWallet is a decentralized application (dApp) built on Ethereum blockchain fo
 
 To get started with MetaWallet, follow these steps:
 
-1. Clone this repository: `git clone <repository-url>`
+1. Clone this repository: `git clone https://github.com/gdevakrishnan/MetaWallet`
 2. Install dependencies: `npm install`
 3. Start the development server: `npm start`
 4. Connect MetaMask to Ethereum testnet or mainnet.
