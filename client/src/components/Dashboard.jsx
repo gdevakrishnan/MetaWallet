@@ -1,8 +1,26 @@
-import React from 'react'
+import React, { Fragment, useContext } from 'react'
+import appContext from '../context/appContext'
 
 function Dashboard() {
+  const { State, getStateParameters } = useContext(appContext);
+  const { 
+    WindowEthereum, 
+    WalletAddress, 
+  } = State;
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    getStateParameters();
+  }
+
   return (
-    <div>Dashboard</div>
+    <Fragment>
+      {
+        (WindowEthereum) ? (
+          (WalletAddress) ? (<h1>{WalletAddress}</h1>) : <button onClick={(e) => handleClick(e)}>Connect</button>
+        ) : <h1>Install metamask to unlock more features</h1>
+      }
+    </Fragment>
   )
 }
 
