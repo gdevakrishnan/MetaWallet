@@ -38,7 +38,7 @@ function History() {
                                 transactionHistory.map((aTransaction, index) => {
                                     return (
                                         <tr key={index}>
-                                            <td>{aTransaction[0]}</td>
+                                            <td>{`${aTransaction[0].slice(0, 7)}...${aTransaction[0].slice(-5)}`}</td>
                                             <td>{aTransaction[1]}</td>
                                             <td>{ethers.utils.formatEther(aTransaction[2])}</td>  {/* To convert BigNumber into Ether */}
                                         </tr>

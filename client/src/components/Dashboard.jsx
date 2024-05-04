@@ -17,7 +17,7 @@ function Dashboard() {
     <Fragment>
       {
         (WindowEthereum) ? (
-          (WalletAddress) ? (<h1>{WalletAddress}</h1>) : <button onClick={(e) => handleClick(e)}>Connect</button>
+          (WalletAddress) ? (<h1>{`${WalletAddress.slice(0, 7)}...${WalletAddress.slice(-5)}`}</h1>) : <button onClick={(e) => handleClick(e)}>Connect</button>
         ) : <h1>Install metamask to unlock more features</h1>
       }
     </Fragment>
