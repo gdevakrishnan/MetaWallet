@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import Dashboard from '../components/Dashboard'
 import Transactions from '../components/Transactions'
 import Help from '../components/Help'
+import History from '../components/History'
 
 function Router() {
   return (
@@ -12,8 +13,9 @@ function Router() {
             <Navbar />
             <Routes>
                 <Route path='/' index element={<Dashboard />}/>
-                <Route path='/help' element={<Help />}/>
                 <Route path='/transactions' element={<Transactions />}/>
+                <Route path='/history' element={<History />}/>
+                <Route path='/help' element={<Help />}/>
             </Routes>
             <Outlet />
         </BrowserRouter>

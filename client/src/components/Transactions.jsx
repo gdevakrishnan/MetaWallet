@@ -22,7 +22,7 @@ function Transactions() {
       const amountWei = ethers.utils.parseEther(payment.amountEth);
       const tx = await WriteContract.sendEthUser(payment.reciever, { value: amountWei });
       await tx.wait();
-      console.log('Transaction successful');
+      console.log('Transaction completed successfully');
       setPayment(initialState);
     } catch (e) {
       console.error(e.message);
@@ -36,7 +36,7 @@ function Transactions() {
         <input type="text" name="reciever" id="reciever" placeholder='Reciever Address' value={payment.reciever} onChange={(e) => {
           setPayment({ ...payment, [e.target.id]: e.target.value })
         }} />
-        <input type="number" name="amountEth" id="amountEth" placeholder='Ether' value={payment.reciever} onChange={(e) => {
+        <input type="number" name="amountEth" id="amountEth" placeholder='Ether' value={payment.amountEth} onChange={(e) => {
           setPayment({ ...payment, [e.target.id]: e.target.value })
         }} />
         <input type="submit" value="Transfer" onClick={(e) => handleTransfer(e)} />
