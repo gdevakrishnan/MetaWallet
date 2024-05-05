@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import { ethers } from 'ethers'
 import appContext from '../context/appContext';
 
@@ -8,10 +8,19 @@ function Transactions() {
     amountEth: ""
   };
 
-  const { State } = useContext(appContext);
-  const { 
+  const { State, setNavState } = useContext(appContext);
+  const {
     WriteContract
   } = State;
+
+  useEffect(() => {
+    setNavState({
+      dashboard: false,
+      transaction: true,
+      history: false,
+      help: false
+    })
+  }, []);
 
   const [payment, setPayment] = useState(initialState);
 
@@ -32,15 +41,17 @@ function Transactions() {
 
   return (
     <Fragment>
-      <form onSubmit={(e) => handleTransfer(e)}>
-        <input type="text" name="reciever" id="reciever" placeholder='Reciever Address' value={payment.reciever} onChange={(e) => {
-          setPayment({ ...payment, [e.target.id]: e.target.value })
-        }} />
-        <input type="number" name="amountEth" id="amountEth" placeholder='Ether' value={payment.amountEth} onChange={(e) => {
-          setPayment({ ...payment, [e.target.id]: e.target.value })
-        }} />
-        <input type="submit" value="Transfer" onClick={(e) => handleTransfer(e)} />
-      </form>
+      <section className='page'>
+        <form onSubmit={(e) => handleTransfer(e)}>
+          <input type="text" name="reciever" id="reciever" placeholder='Reciever Address' value={payment.reciever} onChange={(e) => {
+            setPayment({ ...payment, [e.target.id]: e.target.value })
+          }} />
+          <input type="number" name="amountEth" id="amountEth" placeholder='Ether' value={payment.amountEth} onChange={(e) => {
+            setPayment({ ...payment, [e.target.id]: e.target.value })
+          }} />
+          <input type="submit" value="Transfer" onClick={(e) => handleTransfer(e)} />
+        </form>
+      </section>
     </Fragment>
   )
 }

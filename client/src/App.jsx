@@ -5,6 +5,12 @@ import Router from './router/Router'
 import appContext from './context/appContext'
 
 function App() {
+  const navInitialState = {
+    dashboard: true,
+    transaction: false,
+    history: false,
+    help: false
+  };
 
   const initialState = {
     WindowEthereum: false,
@@ -17,6 +23,7 @@ function App() {
     WriteContract: null,
   };
   const [State, setState] = useState(initialState);
+  const [navState, setNavState] = useState(navInitialState);
 
   useEffect(() => {
     getStateParameters();
@@ -66,7 +73,9 @@ function App() {
   const context = {
     State,
     setState,
-    getStateParameters
+    getStateParameters,
+    navState,
+    setNavState
   }
 
   return (
