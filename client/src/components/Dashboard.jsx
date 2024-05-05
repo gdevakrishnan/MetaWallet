@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import appContext from '../context/appContext'
 
 function Dashboard() {
@@ -6,6 +6,7 @@ function Dashboard() {
   const {
     WindowEthereum,
     WalletAddress,
+    Balance
   } = State;
 
   useEffect(() => {
@@ -22,12 +23,33 @@ function Dashboard() {
     getStateParameters();
   }
 
+  const Card = () => {
+    return (
+      <div className="card">
+        <h1 className="title">Meta-Wallet</h1>
+        {
+          (WalletAddress) ? (
+            <Fragment>
+              <h1 className='accountAddress'>{`${WalletAddress.slice(0, 7)}...${WalletAddress.slice(-5)}`}</h1>
+              <h1 className="balance_title">Balance:</h1>
+              <h1 className="balance">{Balance}ETH</h1>
+              {/* <h1 className="balance">{Math.round(Balance * 1e7) / 1e7}</h1> */}
+            </Fragment>
+          ) : <h1 className="accountAddress">XXXXXX...XXXX</h1>
+        }
+        {
+          (!WalletAddress) ? (<button onClick={(e) => handleClick(e)} className='btn'>Connect</button>) : null
+        }
+      </div>
+    );
+  }
+
   return (
     <Fragment>
-      <section className='page'>
+      <section className='page dashboard_page'>
         {
           (WindowEthereum) ? (
-            (WalletAddress) ? (<h1>{`${WalletAddress.slice(0, 7)}...${WalletAddress.slice(-5)}`}</h1>) : <button onClick={(e) => handleClick(e)}>Connect</button>
+            <Card />
           ) : <h1>Install metamask to unlock more features</h1>
         }
       </section>

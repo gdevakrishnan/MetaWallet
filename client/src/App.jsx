@@ -16,6 +16,7 @@ function App() {
     WindowEthereum: false,
     ContractAddress: "0x7303c63a2230f87268C20B94628E7c6FFBdc15e7",
     WalletAddress: null,
+    Balance: 0,
     ContractAbi: ABI.abi,
     Provider: null,
     Signer: null,
@@ -64,6 +65,14 @@ function App() {
         ...prevState,
         ReadContract,
         WriteContract
+      }));
+
+      const accBalance = await ReadContract.accountBalance({from: WalletAddress});
+      const accBalanceEth = ethers.utils.formatEther(accBalance);
+
+      setState(prevState => ({
+        ...prevState,
+        Balance: accBalanceEth,
       }));
     } else {
       console.log("Metamask Not Found");
