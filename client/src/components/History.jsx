@@ -25,7 +25,6 @@ function History() {
             dashboard: false,
             transaction: false,
             history: true,
-            help: false
         })
     }, []);
 
@@ -35,13 +34,13 @@ function History() {
 
     return (
         <Fragment>
-            <section className='page'>
+            <section className='page history_page'>
                 {
                     (transactionHistory.length > 0) ? (
                         <table>
                             <thead>
-                                <th>From</th>
-                                <th>To</th>
+                                <th>Sender</th>
+                                <th>Reciever</th>
                                 <th>Amount (ETH)</th>
                             </thead>
                             <tbody>

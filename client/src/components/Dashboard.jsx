@@ -15,8 +15,7 @@ function Dashboard() {
     setNavState({
       dashboard: true,
       transaction: false,
-      history: false,
-      help: false
+      history: false
     })
   }, []);
 

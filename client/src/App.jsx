@@ -8,8 +8,7 @@ function App() {
   const navInitialState = {
     dashboard: true,
     transaction: false,
-    history: false,
-    help: false
+    history: false
   };
 
   const initialState = {
@@ -67,7 +66,7 @@ function App() {
         WriteContract
       }));
 
-      const accBalance = await ReadContract.accountBalance({from: WalletAddress});
+      const accBalance = await ReadContract.accountBalance({ from: WalletAddress });
       const accBalanceEth = ethers.utils.formatEther(accBalance);
 
       setState(prevState => ({
