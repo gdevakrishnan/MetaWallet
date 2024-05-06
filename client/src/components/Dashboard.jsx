@@ -1,5 +1,7 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react'
+import React, { Fragment, useContext, useEffect } from 'react'
+import { HiRefresh } from "react-icons/hi";
 import appContext from '../context/appContext'
+import Metamask from '../assets/metamask.png'
 
 function Dashboard() {
   const { State, getStateParameters, setNavState } = useContext(appContext);
@@ -50,7 +52,20 @@ function Dashboard() {
         {
           (WindowEthereum) ? (
             <Card />
-          ) : <h1>Install metamask to unlock more features</h1>
+          ) : (
+            <Fragment>
+              <img src={Metamask} alt="Metamask" className='metamask' />
+              <div className="block">
+                <h1 className='metamask_install'>Install metamask to unlock more features</h1>
+                <button className='reload' onClick={(e) => {
+                  e.preventDefault();
+                  window.location.reload();
+                }}>
+                  <HiRefresh />
+                </button>
+              </div>
+            </Fragment>
+          )
         }
       </section>
     </Fragment>

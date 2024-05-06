@@ -130,3 +130,38 @@ nav ul li a {
 .dashboard_page .card .btn:hover {
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
+
+.dashboard_page .metamask {
+  width: 200px;
+  height: auto;
+  filter: drop-shadow(12px 12px);
+}
+
+.dashboard_page .block {
+  display: flex;
+  gap: 20px;
+}
+
+.dashboard_page .block .metamask_install {
+  color: var(--main);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  background-color: var(--color1);
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 2px solid var(--main);
+}
+
+.dashboard_page .block .reload {
+  background-color: var(--color1);
+  border: 2px solid var(--main);
+  color: var(--main);
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
