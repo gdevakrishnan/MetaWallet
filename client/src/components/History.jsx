@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect, Fragment } from 'react'
 import appContext from '../context/appContext'
 import { ethers } from 'ethers';
+import Loader from '../components/Loader'
 
 function History() {
     const [transactionHistory, setTransactionHistory] = useState([]);
@@ -58,7 +59,7 @@ function History() {
                             </tbody>
                         </table>
                     ) : (
-                        <h1>Data Not found</h1>
+                        <Loader />
                     )
                 }
             </section>
