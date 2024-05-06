@@ -34,7 +34,7 @@ function Dashboard() {
             <Fragment>
               <h1 className='accountAddress'>{`${WalletAddress.slice(0, 7)}...${WalletAddress.slice(-5)}`}</h1>
               <h1 className="balance_title">Balance:</h1>
-              <h1 className="balance">{Balance}ETH</h1>
+              <h1 className="balance">{Balance} ETH</h1>
               {/* <h1 className="balance">{Math.round(Balance * 1e7) / 1e7}</h1> */}
             </Fragment>
           ) : <h1 className="accountAddress">XXXXXX...XXXX</h1>

@@ -41,7 +41,7 @@ function Transactions() {
 
   return (
     <Fragment>
-      <section className='page'>
+      <section className='page form_page'>
         <form onSubmit={(e) => handleTransfer(e)}>
           <input type="text" name="reciever" id="reciever" placeholder='Reciever Address' value={payment.reciever} onChange={(e) => {
             setPayment({ ...payment, [e.target.id]: e.target.value })
@@ -49,7 +49,7 @@ function Transactions() {
           <input type="number" name="amountEth" id="amountEth" placeholder='Ether' value={payment.amountEth} onChange={(e) => {
             setPayment({ ...payment, [e.target.id]: e.target.value })
           }} />
-          <input type="submit" value="Transfer" onClick={(e) => handleTransfer(e)} />
+          <input type="submit" value="Send" onClick={(e) => handleTransfer(e)} className='btn'/>
         </form>
       </section>
     </Fragment>
