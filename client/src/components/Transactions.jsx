@@ -22,19 +22,26 @@ function Transactions() {
   }, []);
 
   const [payment, setPayment] = useState(initialState);
+  const [msg, setMsg] = useState("");
 
   const handleTransfer = async (e) => {
     try {
       e.preventDefault();
-      console.log("Please Wait...");
+      setMsg("Please Wait...");
       const amountWei = ethers.utils.parseEther(payment.amountEth);
       const tx = await WriteContract.sendEthUser(payment.reciever, { value: amountWei });
       await tx.wait();
-      console.log('Transaction completed successfully');
+      setMsg('Transaction Successful');
       setPayment(initialState);
+      setTimeout(() => {
+        setMsg("");
+      }, 5000);
     } catch (e) {
       console.error(e.message);
-      console.log("Transaction Failed");
+      setMsg("Transaction Failed");
+      setTimeout(() => {
+        setMsg("");
+      }, 5000);
     }
   }
 
@@ -48,8 +55,15 @@ function Transactions() {
           <input type="number" name="amountEth" id="amountEth" placeholder='Ether' value={payment.amountEth} onChange={(e) => {
             setPayment({ ...payment, [e.target.id]: e.target.value })
           }} />
-          <input type="submit" value="Send" onClick={(e) => handleTransfer(e)} className='btn'/>
+          <input type="submit" value="Send" onClick={(e) => handleTransfer(e)} className='btn' />
         </form>
+        {
+          (msg.trim() !== "") ? (
+            <div className="msg_container">
+              <h1 className="msg">{msg}</h1>
+            </div>
+          ) : null
+        }
       </section>
     </Fragment>
   )
